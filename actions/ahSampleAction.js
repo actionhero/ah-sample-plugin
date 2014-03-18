@@ -11,7 +11,6 @@ exports.action = {
   version: 1.0,
   toDocument: true,
   run: function(api, connection, next){
-    console.log(api.config)
     connection.response.message = api.config['ah-sample-plugin'].message;
     next(connection, true);
   }
