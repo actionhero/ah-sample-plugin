@@ -1,15 +1,8 @@
 exports.action = {
   name: 'ahSampleAction',
   description: 'I say hello from middleware',
-  inputs: {
-    required: [],
-    optional: []
-  },
-  blockedConnectionTypes: [],
-  outputExample: {},
-  matchExtensionMimeType: false,
-  version: 1.0,
-  toDocument: true,
+  inputs: {},
+
   run: function(api, connection, next){
     connection.response.message = api.config['ah-sample-plugin'].message;
     next(connection, true);
