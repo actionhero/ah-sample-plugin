@@ -1,5 +1,7 @@
 # ah-sample-plugin
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/ah-sample-plugin.svg)](https://greenkeeper.io/)
+
 I am a simple sample plugin for actionhero.  I don't do much, as I am just an example
 
 - I will add the current time to all action responses via middleware
