@@ -1,19 +1,27 @@
-module.exports = {
-  start: function(api, next){
+const {api, Initializer} = require('actionhero')
 
-    var middleware = {
+module.exports = class Middleware extends Initializer {
+  constructor () {
+    super()
+    this.name = 'ah-sample-plugin-middleware'
+  }
+
+  start () {
+    const middleware = {
       name: 'ah-sample-plugin-middleware',
       global: true,
-      priority: 1000,
-      postProcessor: function(data, done){
-        data.connection.response._time = String(new Date());
-        data.connection.response._message = api.config['ah-sample-plugin'].message;
-        done();
+
+      preProcessor: (data) => {
+        data._startingTime = (new Date()).getTime()
+      },
+
+      postProcessor: (data) => {
+        const delta = (new Date()).getTime() - data._startingTime
+        const responseKey = api.config['ah-sample-plugin'].timingKey
+        data.response[responseKey] = delta
       }
-    };
+    }
 
-    api.actions.addMiddleware(middleware);
-
-    next();
+    api.actions.addMiddleware(middleware)
   }
-};
+}

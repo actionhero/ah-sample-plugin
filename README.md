@@ -1,7 +1,30 @@
 # ah-sample-plugin
 
-I am a simple sample plugin for actionhero.  I don't do much, as I am just an example
+I am a simple sample plugin for actionhero.  I don't do much, as I am just an example.
+I will add timing information to each action, using a response key defined in a new config file.  If `api.config['ah-sample-plugin'].timingKey = delta`, all actions would now have `response.delta`.
 
-- I will add the current time to all action responses via middleware
-- I will create a new config file which is used to set a response message to all action responses
-- I load in an action, `ahSampleAction` which will return `{message: ...}` to the client loaded from the config
+## Install
+
+```bash
+npm install ah-sample-plugin --save
+```
+
+Then add it to your project's `./config/plugins.js`:
+```js
+exports['default'] = {
+  plugins: (api) => {
+    return {
+      'ah-sample-plugin': { path: __dirname + '/../node_modules/ah-sample-plugin' }
+    }
+  }
+}
+```
+
+Create a new config file, `./config/ah-sample-plugin.js`:
+```js
+exports.default = {
+  'ah-sample-plugin': (api) => {
+    return { timingKey: 'delta' }
+  }
+}
+```

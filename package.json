@@ -1,15 +1,48 @@
 {
-  "author": "Evan Tahler <evantahler@gmail.com>",
+  "author": "Evan Tahler <evan@actionherojs.com>",
   "name": "ah-sample-plugin",
   "description": "I am a simple sample plugin for actionhero",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "homepage": "http://actionherojs.com",
   "repository": {
     "type": "git",
-    "url": "git://github.com/evantahler/ah-sample-plugin.git"
+    "url": "git://github.com/actionhero/ah-sample-plugin.git"
   },
-  "keywords": ["actionherojs", "actionhero", "sample", "ah-sample-plugin", "plugin", "sample plugin"],
+  "keywords": [
+    "actionherojs",
+    "actionhero",
+    "sample",
+    "ah-sample-plugin",
+    "plugin",
+    "sample plugin"
+  ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=8.0.0"
+  },
+  "peerDependancies": {
+    "actionhero": "^18.0.0-beta.3"
+  },
+  "devDependencies": {
+    "actionhero": "^18.0.0-18.0.0-beta.3",
+    "chai": "^4.0.0",
+    "cross-env": "^5.0.5",
+    "dirty-chai": "^2.0.0",
+    "mocha": "^3.5.0",
+    "standard": "^10.0.3"
+  },
+  "scripts": {
+    "pretest": "standard",
+    "test": "cross-env NODE_ENV=test mocha"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
+    ]
   }
 }
