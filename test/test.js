@@ -19,13 +19,13 @@ describe('Action Delta Middleware', () => {
         'ah-sample-plugin': { path: path.join(__dirname, '..') }
       }
     }
-    api = await actionhero.start({configChanges})
+    api = await actionhero.start({ configChanges })
   })
 
   after(async () => { await actionhero.stop() })
 
   it('Actions work like normal, but also have the new timing key', async () => {
-    let {randomNumber, delta} = await api.specHelper.runAction('randomNumber')
+    let { randomNumber, delta } = await api.specHelper.runAction('randomNumber')
     expect(randomNumber).to.be.at.least(0)
     expect(randomNumber).to.be.at.most(1)
     expect(delta).to.exist()
@@ -34,7 +34,7 @@ describe('Action Delta Middleware', () => {
 
   it('can change the timing key', async () => {
     api.config['ah-sample-plugin'].timingKey = 'newKey'
-    let {randomNumber, delta, newKey} = await api.specHelper.runAction('randomNumber')
+    let { randomNumber, delta, newKey } = await api.specHelper.runAction('randomNumber')
     expect(randomNumber).to.be.at.least(0)
     expect(randomNumber).to.be.at.most(1)
     expect(delta).not.to.exist()
